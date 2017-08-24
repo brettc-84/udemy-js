@@ -13,6 +13,9 @@ function a() {
     function c() {
         // a is the outer environment of c
         console.log(myVar); // 2
+        // aVar does not exist in c, or a but exists at global level
+        // JS looks up the scope chain up to global level
+        console.log(aVar); // a
     }
 
     var myVar = 2;
@@ -23,4 +26,5 @@ function a() {
 
 // myVar on the global level (window)
 var myVar = 1;
+var aVar = 'a @ global';
 a();
