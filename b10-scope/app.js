@@ -1,5 +1,5 @@
 
-// function b sits on the global level (window)
+// function b lexically sits on the global level (window)
 // and as such it's outer reference is the global execution context
 function b() {
     // myVar is not set here
@@ -8,10 +8,19 @@ function b() {
 }
 
 function a() {
+    // lexical environment of function c is now inside function a
+    // ie. not available at global level
+    function c() {
+        // a is the outer environment of c
+        console.log(myVar); // 2
+    }
+
     var myVar = 2;
     b();
+
+    c();
 }
 
-// myVar on the global execution context
+// myVar on the global level (window)
 var myVar = 1;
 a();
